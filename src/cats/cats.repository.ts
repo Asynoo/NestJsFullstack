@@ -1,5 +1,7 @@
 import { Cat } from './entities/cat.entity';
 
-interface CatsRepository {
+export const CATS_REPO = 'CATS_REPO';
+
+export interface CatsRepository {
   create(name: string): Cat;
 }

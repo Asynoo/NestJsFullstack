@@ -1,11 +1,14 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
+import { CATS_REPO, CatsRepository } from './cats.repository';
 
 @Injectable()
 export class CatsService {
+  constructor(@Inject(CATS_REPO) private readonly catRepo: CatsRepository) {}
+
   create(createCatDto: CreateCatDto) {
-    return 'This action adds a new cat';
+    return 'This action adds a new cat, called ' + this.catRepo.create('').name;
   }
 
   findAll() {
