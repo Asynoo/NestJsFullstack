@@ -1,9 +1,20 @@
 import { Module } from '@nestjs/common';
-import { CatsModule } from './cats/cats.module';
+import { UsersModule } from './users/users.module';
+import { RoomsModule } from './rooms/rooms.module';
+import { ChatsModule } from './chats/chats.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-  controllers: [],
-  providers: [],
-  imports: [CatsModule],
+  imports: [
+    UsersModule,
+    RoomsModule,
+    ChatsModule,
+    TypeOrmModule.forRoot({
+      type: 'sqlite',
+      database: `src/database/chatter.db`,
+      autoLoadEntities: true,
+      synchronize: true,
+    }),
+  ],
 })
 export class AppModule {}
