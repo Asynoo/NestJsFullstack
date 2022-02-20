@@ -9,11 +9,7 @@ import { ChatsService } from './chats.service';
 import { CreateChatDto } from './dto/create-chat.dto';
 import { UpdateChatDto } from './dto/update-chat.dto';
 import { Server, Socket } from 'socket.io';
-import { RoomsService } from '../rooms/rooms.service';
 import { getConnection } from 'typeorm';
-import { Room } from '../rooms/entities/room.entity';
-import { Chat } from './entities/chat.entity';
-import * as Console from 'console';
 
 @WebSocketGateway()
 export class ChatsGateway {
